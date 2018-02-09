@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_size">40sp</dimen>
+
+    <dimen name="group_margin">10dp</dimen>
+    <dimen name="group_padding">20dp</dimen>
+
+    <dimen name="question_size">15sp</dimen>
+    <dimen name="question_padding">15dp</dimen>
+    <dimen name="question_margin">10dp</dimen>
+
+    <dimen name="button_margin">10dp</dimen>
+</resources>

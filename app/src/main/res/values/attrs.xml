@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Choice">
+        <attr name="correct" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="TextAnswer">
+        <attr name="answer" format="string" />
+    </declare-styleable>
+    <declare-styleable name="MultiChoice" parent="Choice">
+        <attr name="correct"  />
+    </declare-styleable>
+    <declare-styleable name="OneChoice" parent="Choice">
+        <attr name="correct" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This ScrollView must have an id so that it saves the scroll position -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    style="@style/scroll"
+    tools:context="eu.baboi.cristian.quiztest.MainActivity">
+
+    <!-- This Quiz must have an id so that the score can be retrieved -->
+    <eu.baboi.cristian.quiztest.Quiz
+        android:id="@+id/quiz"
+        style="@style/quiz">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="@string/title"
+            android:textColor="@color/text"
+            android:textSize="@dimen/title_size" />
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q1" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q1a1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q1a2" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q1a3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q2" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q2a1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q2a2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q2a3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a one choice question -->
+        <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q3" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.OneChoice
+                style="@style/oneChoice"
+                android:text="@string/q3a1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.OneChoice
+                style="@style/oneChoice"
+                android:text="@string/q3a2" />
+
+            <eu.baboi.cristian.quiztest.OneChoice
+                style="@style/oneChoice"
+                android:text="@string/q3a3" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q4" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q4a1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q4a2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q4a3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+
+        <!-- This starts a multiple choices question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q5" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q5a1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q5a2" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice
+                style="@style/multiChoice"
+                android:text="@string/q5a3"
+                app:correct="true" />
+
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multiple choices question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q6" />
+
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.TextAnswer
+                style="@style/text"
+                android:hint="@string/q6hint"
+                app:answer="Cristian Baboi" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This is the check answers button  -->
+        <Button style="@style/button" />
+    </eu.baboi.cristian.quiztest.Quiz>
+</ScrollView>

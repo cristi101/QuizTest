@@ -1,0 +1,34 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Quiz Test</string>
+    <string name="app_answer">You answered correctly to <xliff:g id="correct" example="5">%1$d</xliff:g> questions out of <xliff:g id="count" example="7">%2$d</xliff:g> !</string>
+    <string name="title">Quiz time!</string>
+    <string name="button">Check answers!</string>
+
+    <string name="q1">What is this?</string>
+    <string name="q1a1">The third project of Udacity Android Basics challenge.</string>
+    <string name="q1a2">An IQ test.</string>
+    <string name="q1a3">An example of a quiz.</string>
+
+    <string name="q2">Who made this Quiz?</string>
+    <string name="q2a1">It is stolen from somewhere on the Internet.</string>
+    <string name="q2a2">Some guy from Slatina, Romania.</string>
+    <string name="q2a3">A beginner Android programmer.</string>
+
+    <string name="q3">How long did it take to build this quiz?</string>
+    <string name="q3a1">2 days</string>
+    <string name="q3a2">2 weeks</string>
+    <string name="q3a3">2 months</string>
+
+    <string name="q4">Why it was not made in time?</string>
+    <string name="q4a1">Slack and Forum are addictive.</string>
+    <string name="q4a2">The author had headaches for two days.</string>
+    <string name="q4a3">The author has estimated the time required thinking like a youngster.</string>
+
+    <string name="q5">Why these questions ?</string>
+    <string name="q5a1">Because the questions are just an example.</string>
+    <string name="q5a2">Because it is hard to come up with some.</string>
+    <string name="q5a3">Because the questions can be can be easily replaced.</string>
+
+    <string name="q6">What is the author\'s name?</string>
+    <string name="q6hint">Enter the full name</string>
+</resources>
