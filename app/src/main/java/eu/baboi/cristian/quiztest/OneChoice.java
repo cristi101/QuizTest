@@ -1,12 +1,9 @@
 package eu.baboi.cristian.quiztest;
 
-
 import android.content.Context;
 import android.content.res.TypedArray;
-
 import android.util.AttributeSet;
 import android.view.View;
-
 
 /**
  * Created by cristi on 06.02.2018.
@@ -61,14 +58,14 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
         }
     }
 
-    // Mark the correct answer
-    public void setCorrect(boolean c) {
-        correct = c;
-    }
-
     // The Numbered interface methods
     public boolean isCorrect() {
         return correct == isChecked();
+    }
+
+    // Mark the correct answer
+    public void setCorrect(boolean c) {
+        correct = c;
     }
 
     @Override

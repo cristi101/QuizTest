@@ -2,9 +2,7 @@ package eu.baboi.cristian.quiztest;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-
 import android.util.AttributeSet;
-
 
 /**
  * Created by cristi on 06.02.2018.

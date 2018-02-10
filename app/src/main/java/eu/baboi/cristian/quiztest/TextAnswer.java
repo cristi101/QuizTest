@@ -1,15 +1,13 @@
 package eu.baboi.cristian.quiztest;
 
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Toast;
-
 
 /**
  * Created by cristi on 06.02.2018.
@@ -64,7 +62,14 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         } finally {
             a.recycle();
         }
+    }
 
+    // This is to update the count when turned from portrait to landscape
+    @Override
+    public void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
+        //In the constructor getText() is the value in the layout file, not the current value
+        changed();
     }
 
     // Record a change in the text field
@@ -126,6 +131,4 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
             no = num;
         }
     }
-
-
 }

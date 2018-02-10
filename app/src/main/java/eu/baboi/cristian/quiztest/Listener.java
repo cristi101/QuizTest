@@ -3,19 +3,13 @@ package eu.baboi.cristian.quiztest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
-import android.widget.TextView;
-import android.widget.Toast;
-
 
 /**
  * Created by cristi on 06.02.2018.
  */
-
 
 public class Listener implements CompoundButton.OnCheckedChangeListener {
     private Context _context;
@@ -23,7 +17,6 @@ public class Listener implements CompoundButton.OnCheckedChangeListener {
     Listener(Context context) {
         _context = context;
     }
-
 
     // This finds the main activity when a view context is given
     public static Activity getActivity(Context c) {

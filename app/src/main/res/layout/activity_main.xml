@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="@dimen/title_margin"
             android:fontFamily="serif"
             android:gravity="center"
             android:text="@string/title"
@@ -143,7 +143,6 @@
                 style="@style/multiChoice"
                 android:text="@string/q5a3"
                 app:correct="true" />
-
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This starts a multiple choices question -->
@@ -154,12 +153,11 @@
                 style="@style/question"
                 android:text="@string/q6" />
 
-
             <!-- This question possible answers follow  -->
             <eu.baboi.cristian.quiztest.TextAnswer
                 style="@style/text"
                 android:hint="@string/q6hint"
-                app:answer="Cristian Baboi" />
+                app:answer="@string/name" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This is the check answers button  -->

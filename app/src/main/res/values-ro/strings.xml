@@ -1,36 +1,36 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Test grilă</string>
-    <string name="app_answer">Ați răspuns corect la <xliff:g id="correct" example="5">%1$d</xliff:g> întrebări din <xliff:g id="count" example="7">%2$d</xliff:g> !</string>
+    <string name="app_answer">Ați răspuns corect la <xliff:g example="5" id="correct">%1$d</xliff:g> întrebări din <xliff:g example="7" id="count">%2$d</xliff:g> !</string>
 
     <string name="title">Chestionar</string>
     <string name="button">Verifică!</string>
 
-    <string name="q1">Ce e asta?</string>
+    <string name="q1">Ce e asta ?</string>
     <string name="q1a1">Al treilea proiect pentru Udacity Android Basics challenge.</string>
     <string name="q1a2">Un test IQ.</string>
     <string name="q1a3">Un exemplu de chestionar.</string>
 
-    <string name="q2">Cine a facut acest chestionar?</string>
-    <string name="q2a1">Este furat de pe undeva din Internet.</string>
-    <string name="q2a2">Un tip din Slatina, Romania.</string>
+    <string name="q2">Cine a făcut acest chestionar ?</string>
+    <string name="q2a1">Este furat de undeva din Internet.</string>
+    <string name="q2a2">Un tip din Slatina, România.</string>
     <string name="q2a3">Un programator de Android începător.</string>
 
-    <string name="q3">Cât a durat realizarea acestui chestionar?</string>
+    <string name="q3">Cât a durat realizarea acestui chestionar ?</string>
     <string name="q3a1">2 zile</string>
     <string name="q3a2">2 săptămâni</string>
     <string name="q3a3">2 luni</string>
 
-    <string name="q4">De ce nu a fost făcut la timp?</string>
+    <string name="q4">De ce nu a fost făcut la timp ?</string>
     <string name="q4a1">Slack și Forum-ul dau dependență.</string>
     <string name="q4a2">Autorul a avut dureri de cap două zile.</string>
-    <string name="q4a3">Autorul a estimat timpul necesar ca un tânăr.</string>
+    <string name="q4a3">Autorul a presupus că e încă tânăr.</string>
 
     <string name="q5">De ce aceste întrebări?</string>
     <string name="q5a1">Întrebările sunt doar un exemplu.</string>
     <string name="q5a2">Este dificil să le alegi.</string>
     <string name="q5a3">Pentru că întrebările pot fi înlocuite ușor.</string>
 
-    <string name="q6">Care este numele autorului?</string>
+    <string name="q6">Care este numele autorului ?</string>
     <string name="q6hint">Introduceți numele întreg</string>
-
+    <string name="name">Cristian Baboi</string>
 </resources>
