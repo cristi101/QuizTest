@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
  * Created by cristi on 06.02.2018.
  */
 
-public class MultiChoiceQuestion extends LinearLayout implements Numbered, Initialized {
+public class MultiChoiceQuestion extends LinearLayout implements Counter, Numbered {
     private Question q; // reference to the text of the question
     private int no = 0; // question number
     private int count = 0; //the number of variants
@@ -39,99 +39,95 @@ public class MultiChoiceQuestion extends LinearLayout implements Numbered, Initi
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    // Initialize the mCorrect
-    @Override
-    public void init() throws IllegalStateException {
-        if (count < 1)
-            throw new IllegalStateException("There must be at least one variant for the answer! : Question " + String.valueOf(no));
-        mCorrect = isCorrect();
-    }
-
-
-    // Detect if there is a change in the truth value and notify the parent
-    @Override
-    public void truthChanged() {
-
-        Quiz qz = (Quiz) getParent();
-        if (qz != null) {
-            boolean cCorrect = isCorrect();
-            if (mCorrect != cCorrect)
-                if (cCorrect) {
-                    qz.increment();
-                } else {
-                    qz.decrement();
-                }
-            mCorrect = cCorrect;
-        }
-    }
-
-    // Count the correct questions
-    public void increment() {
-        correct++;
-        truthChanged();
-    }
-
-    public void decrement() {
-        correct--;
-        truthChanged();
-    }
 
     // The Numbered interface methods
 
     // The question is correct if the number of true variants is the number of variants
+    @Override
     public boolean isCorrect() {
         return correct == count;
     }
 
     // true if numbered
+    @Override
     public boolean isNumbered() {
         return no != 0;
     }
 
-    // set the question number
+    // set the question number and perform some initialization
+    @Override
     public void number(int num) throws IllegalStateException {
         if (no == 0) {
             no = num;
+            // Here the view doesn't have a parent yet so we cannot update the parent counters here
 
-            // q might be null at this point
+            // initialize the mCorrect
+            if (count < 1)
+                throw new IllegalStateException("There must be at least one answer! : Question " + String.valueOf(no));
+            mCorrect = isCorrect();
+
+            // Throw an error if there is no question found
             if (q == null)
                 throw new IllegalStateException("The question is missing! : Question " + String.valueOf(no));
 
+            // initialize the question
             q.number(no);
-
         }
     }
 
+    // Detect if there is a change in the truth value and notify the parent
+    @Override
+    public void truthChanged() {
+        boolean cCorrect = isCorrect();
 
-    // Save the reference to question text
-    private void findQuestion(View v) throws IllegalStateException {
-        if (v instanceof Question) {
-            if (!((Question) v).isSeen()) {
-                qcount++; // found a new question
-                ((Question) v).setSeen();
-
-                //ensure there is only one question per group
-                if (qcount > 1)
-                    throw new IllegalStateException("There can be only one question in a group: " + ((Question) v).getText());
-            }
-            q = (Question) v;
+        // update the number of correct questions
+        Counter c = (Counter) getParent();
+        if (c != null && mCorrect != cCorrect) {
+                if (cCorrect) {
+                    c.increment();
+                } else {
+                    c.decrement();
+                }
         }
+
+        mCorrect = cCorrect;
     }
 
-    // Perform counting
-    private void countVariants(View v) throws IllegalStateException {
-        if ((v instanceof Numbered) && !(v instanceof Question)) {
-            if (!((Numbered) v).isNumbered()) {
-                count++; // found a new variant
 
-                if (!(v instanceof MultiChoice) && !(v instanceof TextAnswer))
-                    throw new IllegalStateException("Only MultiChoice and TextAnswer can be childs of a MultiChoiceQuestion! : Variant " + String.valueOf(count));
+    // The Counter interface methods
 
-                // set the variant number
-                ((Numbered) v).number(count);
+    // Count the correct answers and update the truth value of the question
+    @Override
+    public void increment() {
+        correct++;
+        truthChanged();
+    }
 
-                // count the correct variants
-                if (((Numbered) v).isCorrect()) {
+    @Override
+    public void decrement() {
+        correct--;
+        truthChanged();
+    }
+
+    // Count all the possible answers and initialize them
+    @Override
+    public void countChildren(View v) throws IllegalStateException {
+        if ((v instanceof Numbered) && !(v instanceof Question)) { // Found an answer
+
+            Numbered a = (Numbered) v;
+            if (!a.isNumbered()) { // The answer is seen for the first time
+
+                count++; // count the possible answer
+
+                // Don't know the question number yet
+                if (!(a instanceof MultiChoice) && !(a instanceof TextAnswer))
+                    throw new IllegalStateException("Only MultiChoice and TextAnswer can be children of a MultiChoiceQuestion! : Answer " + String.valueOf(count));
+
+                // set the answer number and perform some initialization
+                a.number(count);
+
+                // count the correct answers
+                if (a.isCorrect()) {
                     increment();
                 }
 
@@ -139,32 +135,53 @@ public class MultiChoiceQuestion extends LinearLayout implements Numbered, Initi
         }
     }
 
-    // Find the question text and variant answers, before they are added to their parents
+    // Search the children
+
+    // Save the reference to question text
+    private void findQuestion(View v) throws IllegalStateException {
+        if (v instanceof Question) { //Found a question
+
+            Question qq = (Question) v;
+            if (!qq.isSeen()) { //is a new question
+
+                qcount++; // count the question
+                qq.setSeen(); // mark as seen
+
+                //ensure there is only one question per group
+                if (qcount > 1)
+                    throw new IllegalStateException("There can be only one question in a group! : " + qq.getText());
+            }
+            q = qq; // remember the question
+        }
+    }
+
+
+    // Find the question text and count all the possible answers, before they are added to their parents
     @Override
     public void addView(View child) {
         findQuestion(child);
-        countVariants(child);
+        countChildren(child);
         super.addView(child);
     }
 
     @Override
     public void addView(View child, int index) {
         findQuestion(child);
-        countVariants(child);
+        countChildren(child);
         super.addView(child, index);
     }
 
     @Override
     public void addView(View child, ViewGroup.LayoutParams params) {
         findQuestion(child);
-        countVariants(child);
+        countChildren(child);
         super.addView(child, params);
     }
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         findQuestion(child);
-        countVariants(child);
+        countChildren(child);
         super.addView(child, index, params);
     }
 

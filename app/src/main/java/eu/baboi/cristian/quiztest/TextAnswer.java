@@ -15,15 +15,13 @@ import android.view.inputmethod.EditorInfo;
 
 public class TextAnswer extends android.support.v7.widget.AppCompatEditText implements Numbered {
     private int no = 0; // the variant number
-    private String answer; // the correct answer to the question
+    private String answer = ""; // the correct answer to the question
     private boolean mCorrect; // previous state of isCorrect
 
     // The constructors
     public TextAnswer(Context context) {
         super(context);
-        setSaveEnabled(true);
-        setImeOptions(EditorInfo.IME_ACTION_DONE);
-        mCorrect = false;
+        init(context);
     }
 
     public TextAnswer(Context context, AttributeSet attrs) {
@@ -34,15 +32,12 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
                 0, 0);
 
         try {
+            // find the value of the answer attribute
             setAnswer(a.getString(R.styleable.TextAnswer_answer));
-            setSaveEnabled(true);
-            setImeOptions(EditorInfo.IME_ACTION_DONE);
-            mCorrect = isCorrect();
-            if (getId() == View.NO_ID)
-                setId(((MainActivity) Listener.getActivity(context)).genID());
         } finally {
             a.recycle();
         }
+        init(context);
     }
 
     public TextAnswer(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -53,67 +48,28 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
                 0, 0);
 
         try {
+            // find the value of the answer attribute
             setAnswer(a.getString(R.styleable.TextAnswer_answer));
-            setSaveEnabled(true);
-            setImeOptions(EditorInfo.IME_ACTION_DONE);
-            mCorrect = isCorrect();
-            if (getId() == View.NO_ID)
-                setId(((MainActivity) Listener.getActivity(context)).genID());
         } finally {
             a.recycle();
         }
+        init(context);
     }
 
-    // This is to update the count when turned from portrait to landscape
-    @Override
-    public void onRestoreInstanceState(Parcelable state) {
-        super.onRestoreInstanceState(state);
-        //In the constructor getText() is the value in the layout file, not the current value
-        changed();
+    // Perform some initialization
+    void init(Context c) {
+        setSaveEnabled(true);
+        setImeOptions(EditorInfo.IME_ACTION_DONE);
+        mCorrect = isCorrect();
+        if (getId() == View.NO_ID)
+            setId(((MainActivity) Listener.getActivity(c)).genID());
     }
-
-    // Record a change in the text field
-    public void changed() {
-        boolean cCorrect = isCorrect();
-        if (mCorrect != cCorrect)
-            if (cCorrect) ((MultiChoiceQuestion) getParent()).increment();
-            else
-                ((MultiChoiceQuestion) getParent()).decrement();
-        mCorrect = cCorrect;
-    }
-
-    // Check when focus lost
-    @Override
-    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
-        super.onFocusChanged(focused, direction, previouslyFocusedRect);
-        if (!focused) changed();
-    }
-
-    // Check when action done
-    @Override
-    public void onEditorAction(int actionCode) {
-        super.onEditorAction(actionCode);
-        if (actionCode == EditorInfo.IME_ACTION_DONE) {
-            changed();
-        }
-    }
-
-    // Check when back button
-    @Override
-    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK &&
-                event.getAction() == KeyEvent.ACTION_UP) {
-            changed();
-            return false;
-        }
-        return super.dispatchKeyEvent(event);
-    }
-
 
     // Remember the correct answer
     public void setAnswer(String txt) {
         answer = txt;
     }
+
 
     // The Numbered interface methods
     public boolean isCorrect() {
@@ -130,5 +86,56 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         if (no == 0) {
             no = num;
         }
+    }
+
+    // Detect if there is a change in the truth value and notify the parent
+    @Override
+    public void truthChanged() {
+        boolean cCorrect = isCorrect();
+
+        // update the number of correct answers
+        Counter c = (Counter) getParent();
+        if (c != null && mCorrect != cCorrect)
+            if (cCorrect)
+                c.increment();
+            else
+                c.decrement();
+
+        mCorrect = cCorrect;
+    }
+
+    // This is to update the count when turned from portrait to landscape
+    @Override
+    public void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
+        //In the constructor getText() is the value in the layout file, not the current value
+        truthChanged();
+    }
+
+    // Check when focus lost
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+        if (!focused) truthChanged();
+    }
+
+    // Check when action done
+    @Override
+    public void onEditorAction(int actionCode) {
+        super.onEditorAction(actionCode);
+        if (actionCode == EditorInfo.IME_ACTION_DONE) {
+            truthChanged();
+        }
+    }
+
+    // Check when back button
+    @Override
+    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK &&
+                event.getAction() == KeyEvent.ACTION_UP) {
+            truthChanged();
+            return false;
+        }
+        return super.dispatchKeyEvent(event);
     }
 }

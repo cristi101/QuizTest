@@ -25,15 +25,16 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
         super(context, attrs, defStyleAttr);
     }
 
+
     public boolean isSeen() {
         return seen;
     }
-
     public void setSeen() {
         seen = true;
     }
 
     // The Numbered interface methods
+
     public boolean isCorrect() {
         return true;
     }
@@ -48,8 +49,13 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
             no = num;
 
             // Set the Question number
-            this.setText(String.valueOf(no) + ". " + this.getText().toString());
+            this.setText(String.valueOf(no) + ") " + this.getText().toString());
         }
+    }
+
+    @Override
+    public void truthChanged() {
+
     }
 
 }

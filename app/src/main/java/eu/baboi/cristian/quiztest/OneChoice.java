@@ -1,9 +1,11 @@
 package eu.baboi.cristian.quiztest;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by cristi on 06.02.2018.
@@ -16,8 +18,7 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     // The constructors
     public OneChoice(Context context) {
         super(context);
-        setSaveEnabled(true);
-        setFocusableInTouchMode(false);
+        init(context);
     }
 
     public OneChoice(Context context, AttributeSet attrs) {
@@ -26,17 +27,13 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
                 attrs,
                 R.styleable.OneChoice,
                 0, 0);
-
         try {
+            // find the value of the correct attribute
             setCorrect(a.getBoolean(R.styleable.OneChoice_correct, false));
-            setSaveEnabled(true);
-            setFocusableInTouchMode(false);
-
-            if (getId() == View.NO_ID)
-                setId(((MainActivity) Listener.getActivity(context)).genID());
         } finally {
             a.recycle();
         }
+        init(context);
     }
 
     public OneChoice(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -45,23 +42,31 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
                 attrs,
                 R.styleable.OneChoice,
                 0, 0);
-
         try {
+            // find the value of the correct attribute
             setCorrect(a.getBoolean(R.styleable.OneChoice_correct, false));
-            setSaveEnabled(true);
-            setFocusableInTouchMode(false);
-
-            if (getId() == View.NO_ID)
-                setId(((MainActivity) Listener.getActivity(context)).genID());
         } finally {
             a.recycle();
         }
+        init(context);
     }
 
-    // The Numbered interface methods
+    // Perform some initialization
+    void init(Context c) {
+        setSaveEnabled(true);
+        setFocusableInTouchMode(false);
+
+        if (getId() == View.NO_ID)
+            setId(((MainActivity) Listener.getActivity(c)).genID());
+    }
+
+    @Override
     public boolean isCorrect() {
         return correct == isChecked();
     }
+
+
+    // The Numbered interface methods
 
     // Mark the correct answer
     public void setCorrect(boolean c) {
@@ -73,11 +78,42 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
         return no != 0;
     }
 
+    // set the number and perform some initialization
     @Override
     public void number(int num) {
         if (no == 0) {
             no = num;
-            setOnCheckedChangeListener(new Listener(getContext()));
+
+            // Set the change listener
+            setOnCheckedChangeListener(new Listener());
+        }
+    }
+
+    // Detect if there is a change in the truth value and notify the parent
+    @Override
+    public void truthChanged() {
+
+        // Find the Numbered in focus and hide the keyboard
+        Context t = getContext();
+
+        // Hide the keyboard
+        InputMethodManager imm = (InputMethodManager) t.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getWindowToken(), 0);
+
+        // Get the view with the focus
+        Activity a = Listener.getActivity(t);
+        View f = a.getCurrentFocus();
+
+        // Notify the change to the Numbered in focus
+        if ((f != null) && (f instanceof Numbered)) ((Numbered) f).truthChanged();
+
+        // update the number of correct answers
+        Counter c = (Counter) getParent();
+        if (c != null)
+            if (isCorrect()) {
+                c.increment();
+            } else {
+                c.decrement();
         }
     }
 
