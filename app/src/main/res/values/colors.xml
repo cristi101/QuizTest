@@ -12,5 +12,5 @@
 
     <color name="button_off">#ed2a4a</color>
     <color name="button_on">#369743</color>
-
+    <color name="button_selected">@android:color/white</color>
 </resources>
