@@ -1,27 +1,13 @@
 package eu.baboi.cristian.quiztest;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
+import android.view.View;
 import android.widget.CompoundButton;
 
 /**
  * Created by cristi on 06.02.2018.
  */
 
-public class Listener implements CompoundButton.OnCheckedChangeListener {
-
-    // This finds the main activity when a view context is given
-    static Activity getActivity(Context c) {
-        Context context = c;
-        while (context instanceof ContextWrapper) {
-            if (context instanceof Activity) {
-                return (Activity) context;
-            }
-            context = ((ContextWrapper) context).getBaseContext();
-        }
-        return null;
-    }
+public class Listener implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     // This gets called for every OneChoice or MultiChoice variant
     @Override
@@ -30,4 +16,15 @@ public class Listener implements CompoundButton.OnCheckedChangeListener {
         ((Numbered) v).truthChanged();
     }
 
+    // This gets called for every OneChoice or MultiChoice variant
+    @Override
+    public void onClick(View v) {
+        // move the focus to the current control
+        v.requestFocusFromTouch();
+        // Get the view with the focus
+        // Activity a = MainActivity.getActivity(getContext());
+        // View f = a.getCurrentFocus();
+        // or
+        // getRootView().findFocus()  instead ?
+    }
 }

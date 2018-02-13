@@ -1,11 +1,9 @@
 package eu.baboi.cristian.quiztest;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by cristi on 06.02.2018.
@@ -54,10 +52,11 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     // Perform some initialization
     void init(Context c) {
         setSaveEnabled(true);
+        setFocusable(true);
         setFocusableInTouchMode(false);
 
         if (getId() == View.NO_ID)
-            setId(((MainActivity) Listener.getActivity(c)).genID());
+            setId(MainActivity.getActivity(c).genID());
     }
 
     @Override
@@ -83,29 +82,17 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     public void number(int num) {
         if (no == 0) {
             no = num;
-
+            Listener l = new Listener();
+            // set the click listener
+            setOnClickListener(l);
             // Set the change listener
-            setOnCheckedChangeListener(new Listener());
+            setOnCheckedChangeListener(l);
         }
     }
 
     // Detect if there is a change in the truth value and notify the parent
     @Override
-    public void truthChanged() {
-
-        // Find the Numbered in focus and hide the keyboard
-        Context t = getContext();
-
-        // Hide the keyboard
-        InputMethodManager imm = (InputMethodManager) t.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getWindowToken(), 0);
-
-        // Get the view with the focus
-        Activity a = Listener.getActivity(t);
-        View f = a.getCurrentFocus();
-
-        // Notify the change to the Numbered in focus
-        if ((f != null) && (f instanceof Numbered)) ((Numbered) f).truthChanged();
+    public void truthChanged() { // Called from Listener
 
         // update the number of correct answers
         Counter c = (Counter) getParent();
@@ -118,3 +105,4 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     }
 
 }
+

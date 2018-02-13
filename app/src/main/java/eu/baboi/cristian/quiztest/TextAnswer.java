@@ -5,9 +5,10 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by cristi on 06.02.2018.
@@ -59,10 +60,16 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     // Perform some initialization
     void init(Context c) {
         setSaveEnabled(true);
-        setImeOptions(EditorInfo.IME_ACTION_DONE);
+        setFocusable(true);
+        setFocusableInTouchMode(true);
+        setTextIsSelectable(true); // This also make the text focusable in both modes !!!
+        setSelectAllOnFocus(true);
+
+        //setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mCorrect = isCorrect();
+
         if (getId() == View.NO_ID)
-            setId(((MainActivity) Listener.getActivity(c)).genID());
+            setId(MainActivity.getActivity(c).genID());
     }
 
     // Remember the correct answer
@@ -72,6 +79,7 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
 
 
     // The Numbered interface methods
+    @Override
     public boolean isCorrect() {
         return answer.equalsIgnoreCase(this.getText().toString().trim());
     }
@@ -88,9 +96,12 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         }
     }
 
+
     // Detect if there is a change in the truth value and notify the parent
     @Override
     public void truthChanged() {
+        Log.e("TextAnswer truthChanged", "Updated the answer! " + getText().toString());
+
         boolean cCorrect = isCorrect();
 
         // update the number of correct answers
@@ -109,33 +120,61 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     public void onRestoreInstanceState(Parcelable state) {
         super.onRestoreInstanceState(state);
         //In the constructor getText() is the value in the layout file, not the current value
-        truthChanged();
+        truthChanged(); // called to notify of the restored value of answer
+    }
+
+    private void showKeyboard() {
+        Log.e("TextAnswer", "SHOW keyboard");
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(this, 0);
+    }
+
+    private void hideKeyboard() {
+        Log.e("TextAnswer", "HIDE keyboard");
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getWindowToken(), 0);
+    }
+
+    private void focusChanged(boolean focused) {
+        if (focused) {
+            Log.e("TextAnswer", "FOCUS On " + getText().toString());
+            //showKeyboard();
+        } else {
+            Log.e("TextAnswer", "FOCUS Off " + getText().toString());
+            truthChanged(); //record the changes
+            // hideKeyboard();
+        }
     }
 
     // Check when focus lost
     @Override
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
-        if (!focused) truthChanged();
+        Log.e("TextAnswer", "FOCUS " + String.valueOf(focused) + " - " + getText().toString());
+        focusChanged(focused);
     }
 
     // Check when action done
     @Override
     public void onEditorAction(int actionCode) {
         super.onEditorAction(actionCode);
+        Log.e("TextAnswer", "Action: " + String.valueOf(actionCode) + " - " + getText().toString());
         if (actionCode == EditorInfo.IME_ACTION_DONE) {
-            truthChanged();
+            Log.e("TextAnswer", "DONE " + getText().toString());
+            //truthChanged();
         }
     }
 
     // Check when back button
-    @Override
-    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK &&
-                event.getAction() == KeyEvent.ACTION_UP) {
-            truthChanged();
-            return false;
-        }
-        return super.dispatchKeyEvent(event);
-    }
+//    @Override
+//    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
+//        Log.e("TextAnswer","BACK "+getText().toString());
+////        if (keyCode == KeyEvent.KEYCODE_BACK &&
+////                event.getAction() == KeyEvent.ACTION_UP) {
+////
+////            //truthChanged();
+////            return false;
+////        }
+//        return super.dispatchKeyEvent(event);
+//    }
 }

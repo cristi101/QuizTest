@@ -109,6 +109,4 @@ public class Quiz extends LinearLayout implements Counter {
         super.addView(child, index, params);
     }
 
-
-
 }

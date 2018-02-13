@@ -1,6 +1,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Quiz Test</string>
-    <string name="app_answer">You answered correctly to <xliff:g example="5" id="correct">%1$d</xliff:g> questions out of <xliff:g example="7" id="count">%2$d</xliff:g> !</string>
+    <string name="app_answer">You answered correctly \nto <xliff:g example="5" id="correct">%1$d</xliff:g> questions out of <xliff:g example="7" id="count">%2$d</xliff:g> !</string>
 
     <string name="title">Quiz time!</string>
     <string name="button">Check answers!</string>
@@ -11,7 +11,7 @@
     <string name="q1a3">An example of a quiz.</string>
 
     <string name="q2">Who made this quiz ?</string>
-    <string name="q2a1">It is stolen from somewhere on the Internet.</string>
+    <string name="q2a1">It is stolen from the Internet.</string>
     <string name="q2a2">Some guy from Slatina, Romania.</string>
     <string name="q2a3">A beginner Android programmer.</string>
 
@@ -26,9 +26,9 @@
     <string name="q4a3">The author supposed he is still young.</string>
 
     <string name="q5">Why these questions ?</string>
-    <string name="q5a1">Because the questions are just an example.</string>
-    <string name="q5a2">Because it is hard to come up with some.</string>
-    <string name="q5a3">Because the questions can be can be easily replaced.</string>
+    <string name="q5a1">The questions are just an example.</string>
+    <string name="q5a2">It is hard to come up with some.</string>
+    <string name="q5a3">Because the questions can be easily replaced.</string>
 
     <string name="q6">What is the author\'s name ?</string>
     <string name="q6hint">Enter the full name</string>

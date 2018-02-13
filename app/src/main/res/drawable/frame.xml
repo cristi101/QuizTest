@@ -2,13 +2,13 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <stroke
-        android:width="4dp"
+        android:width="@dimen/thick"
         android:color="@color/button_off" />
 
-    <solid android:color="#40FFffff" />
+    <solid android:color="@color/frame_bkgd" />
 
     // Reduce the corner radius value
-    <corners android:radius="10dp" />
+    <corners android:radius="@dimen/radius" />
 
     <padding
         android:bottom="10dp"

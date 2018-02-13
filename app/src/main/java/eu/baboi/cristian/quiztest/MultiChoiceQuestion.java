@@ -61,17 +61,21 @@ public class MultiChoiceQuestion extends LinearLayout implements Counter, Number
             no = num;
             // Here the view doesn't have a parent yet so we cannot update the parent counters here
 
-            // initialize the mCorrect
-            if (count < 1)
-                throw new IllegalStateException("There must be at least one answer! : Question " + String.valueOf(no));
-            mCorrect = isCorrect();
-
             // Throw an error if there is no question found
             if (q == null)
                 throw new IllegalStateException("The question is missing! : Question " + String.valueOf(no));
 
+            // initialize the mCorrect
+            if (count < 1)
+                throw new IllegalStateException("There must be at least one answer! : Question " + q.getText().toString());
+            mCorrect = isCorrect();
+
+            // Does not check if there is a solution to the quiz
+            // For MultiChoice should be always possible to find one
+
             // initialize the question
             q.number(no);
+            q.setCorrect(mCorrect);
         }
     }
 
@@ -88,8 +92,8 @@ public class MultiChoiceQuestion extends LinearLayout implements Counter, Number
                 } else {
                     c.decrement();
                 }
+            q.setCorrect(cCorrect); // skip calls if not needed
         }
-
         mCorrect = cCorrect;
     }
 

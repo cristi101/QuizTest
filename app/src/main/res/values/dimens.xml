@@ -11,4 +11,9 @@
     <dimen name="question_margin">10dp</dimen>
 
     <dimen name="button_margin">10dp</dimen>
+
+    <!-- The frame and button thickness and corner radius  -->
+    <dimen name="radius">10dp</dimen>
+    <dimen name="thick">4dp</dimen>
+
 </resources>

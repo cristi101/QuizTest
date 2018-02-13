@@ -49,16 +49,27 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
             no = num;
             // Here the view doesn't have a parent yet so we cannot update the parent counters here
 
-            // initialize the mCorrect
-            if (count < 1)
-                throw new IllegalStateException("There must be at least one variant for the answer! : Question " + String.valueOf(no));
-            mCorrect = isCorrect();
-
             // q might be null at this point
             if (q == null)
                 throw new IllegalStateException("The question is missing! : Question " + String.valueOf(no));
 
+            // initialize the mCorrect
+            if (count < 1)
+                throw new IllegalStateException("There must be at least one variant for the answer! : Question " + q.getText().toString());
+            mCorrect = isCorrect();
+
+            // Check if there is a solution to the quiz
+            int d = count - correct;
+            if (getCheckedRadioButtonId() == View.NO_ID) {// If there is no selection
+                if (d != 1)
+                    throw new IllegalStateException("There is no solution! : " + q.getText().toString());
+            } else { // If there is an answer selected
+                if (d != 0 && d != 2)
+                    throw new IllegalStateException("There is no solution! : " + q.getText().toString());
+            }
+
             q.number(no);
+            q.setCorrect(mCorrect);
         }
     }
 
@@ -75,8 +86,9 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
                 } else {
                     c.decrement();
                 }
+            // here should set correct for q
+            q.setCorrect(cCorrect);  // skip calls if not needed
         }
-
         mCorrect = cCorrect;
     }
 

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="QuestionState">
+        <attr name="state_correct" format="boolean" />
+    </declare-styleable>
     <declare-styleable name="Choice">
         <attr name="correct" format="boolean" />
     </declare-styleable>

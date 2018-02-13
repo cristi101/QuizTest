@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This ScrollView must have an id so that it saves the scroll position -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll"
     style="@style/scroll"
     tools:context="eu.baboi.cristian.quiztest.MainActivity">
 
-    <!-- This Quiz must have an id so that the score can be retrieved -->
     <eu.baboi.cristian.quiztest.Quiz
-        android:id="@+id/quiz"
         style="@style/quiz">
 
         <TextView
@@ -26,7 +22,7 @@
         <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
 
-            <!-- This is the question  -->
+            <!-- This is the question -->
             <eu.baboi.cristian.quiztest.Question
                 style="@style/question"
                 android:text="@string/q1" />
@@ -34,6 +30,7 @@
             <!-- This question possible answers follow  -->
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q1a1"
                 app:correct="true" />
 
@@ -43,6 +40,7 @@
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q1a3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
@@ -62,13 +60,32 @@
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q2a2"
                 app:correct="true" />
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q2a3"
                 app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- TREBUIE SCOS DE AICI -->
+        <!-- This starts a multiple choices question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <!-- This is the question  -->
+            <eu.baboi.cristian.quiztest.Question
+                style="@style/question"
+                android:text="@string/q6" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.TextAnswer
+                android:id="@+id/unu"
+                style="@style/text"
+                android:hint="@string/q6hint"
+                app:answer="@string/name" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This starts a one choice question -->
@@ -106,16 +123,19 @@
             <!-- This question possible answers follow  -->
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q4a1"
                 app:correct="true" />
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q4a2"
                 app:correct="true" />
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q4a3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
@@ -132,6 +152,7 @@
             <!-- This question possible answers follow  -->
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q5a1"
                 app:correct="true" />
 
@@ -141,6 +162,7 @@
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
+                android:checked="true"
                 android:text="@string/q5a3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
@@ -160,7 +182,8 @@
                 app:answer="@string/name" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-        <!-- This is the check answers button  -->
-        <Button style="@style/button" />
+        <!-- This is the check answers button -->
+
+        <eu.baboi.cristian.quiztest.VerifyButton style="@style/button" />
     </eu.baboi.cristian.quiztest.Quiz>
 </ScrollView>

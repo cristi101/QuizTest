@@ -11,7 +11,7 @@
     <!-- Upper rectangle (background color) -->
     <item android:left="@dimen/thick">
         <shape android:shape="rectangle">
-            <solid android:color="@color/text_bkgd" />
+            <solid android:color="@color/text_selected" />
         </shape>
     </item>
 </layer-list>
