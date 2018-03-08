@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:drawable="@drawable/incorrect_selected" android:state_focused="true" app:state_correct="false" />
+    <item android:drawable="@drawable/correct_selected" android:state_focused="true" app:state_correct="true" />
+    <item android:drawable="@drawable/incorrect_question" app:state_correct="false" />
+    <item android:drawable="@drawable/correct_question" app:state_correct="true" />
+</selector>

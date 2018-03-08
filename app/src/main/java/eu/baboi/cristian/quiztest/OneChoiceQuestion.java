@@ -11,22 +11,20 @@ import android.widget.RadioGroup;
  */
 
 public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
-    private Question q; // reference to the text of the question
+    private Question question; // reference to the text of the question
     private int no = 0; // question number
+    private int questionCount = 0; //the number of questions
     private int count = 0; //the number of variants
-    private int qcount = 0; //the number of questions
     private int correct = 0; //the number of correct variants
-    private boolean mCorrect; //the previous value of isCorrect
+    private boolean oldCorrect; //the previous value of isCorrect
 
     // The constructors
     public OneChoiceQuestion(Context context) {
         super(context);
     }
-
     public OneChoiceQuestion(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
 
     // The Numbered interface methods
 
@@ -49,47 +47,47 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
             no = num;
             // Here the view doesn't have a parent yet so we cannot update the parent counters here
 
-            // q might be null at this point
-            if (q == null)
+            // question might be null at this point
+            if (question == null)
                 throw new IllegalStateException("The question is missing! : Question " + String.valueOf(no));
 
-            // initialize the mCorrect
+            // initialize the oldCorrect
             if (count < 1)
-                throw new IllegalStateException("There must be at least one variant for the answer! : Question " + q.getText().toString());
-            mCorrect = isCorrect();
+                throw new IllegalStateException("There must be at least one variant for the answer! : Question " + question.getText().toString());
 
             // Check if there is a solution to the quiz
-            int d = count - correct;
+            int delta = count - correct;
             if (getCheckedRadioButtonId() == View.NO_ID) {// If there is no selection
-                if (d != 1)
-                    throw new IllegalStateException("There is no solution! : " + q.getText().toString());
+                if (delta != 1)
+                    throw new IllegalStateException("There is no solution! : " + question.getText().toString());
             } else { // If there is an answer selected
-                if (d != 0 && d != 2)
-                    throw new IllegalStateException("There is no solution! : " + q.getText().toString());
+                if (delta != 0 && delta != 2)
+                    throw new IllegalStateException("There is no solution! : " + question.getText().toString());
             }
 
-            q.number(no);
-            q.setCorrect(mCorrect);
+            oldCorrect = isCorrect();
+            question.number(no);
+            question.setCorrect(oldCorrect);
         }
     }
 
     // Detect if there is a change in the truth value and notify the parent
     @Override
     public void truthChanged() {
-        boolean cCorrect = isCorrect();
+        boolean newCorrect = isCorrect();
 
         // update the number of correct questions
-        Counter c = (Counter) getParent();
-        if (c != null && mCorrect != cCorrect) {
-                if (cCorrect) {
-                    c.increment();
-                } else {
-                    c.decrement();
-                }
-            // here should set correct for q
-            q.setCorrect(cCorrect);  // skip calls if not needed
+        Counter quiz = (Counter) getParent();
+        if (quiz != null && oldCorrect != newCorrect) {
+            if (newCorrect)
+                quiz.increment();
+            else
+                quiz.decrement();
+
+            // here should set correct for question
+            question.setCorrect(newCorrect);  // skip calls if not needed
         }
-        mCorrect = cCorrect;
+        oldCorrect = newCorrect;
     }
 
     // The Counter interface methods
@@ -110,20 +108,20 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
     public void countChildren(View v) throws IllegalStateException {
         if ((v instanceof Numbered) && !(v instanceof Question)) {// Found an answer
 
-            Numbered a = (Numbered) v;
-            if (!a.isNumbered()) {// The answer is seen for the first time
+            Numbered answer = (Numbered) v;
+            if (!answer.isNumbered()) {// The answer is seen for the first time
 
                 count++; // count the possible answer
 
                 // Don't know the question number yet
-                if (!(a instanceof OneChoice))
+                if (!(answer instanceof OneChoice))
                     throw new IllegalStateException("Only OneChoice can be a child of a OneChoiceQuestion ! : Answer " + String.valueOf(count));
 
                 // set the answer number and perform some initialization
-                a.number(count);
+                answer.number(count);
 
                 // count the correct answers
-                if (a.isCorrect()) {
+                if (answer.isCorrect()) {
                     increment();
                 }
             }
@@ -136,17 +134,17 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
     private void findQuestion(View v) throws IllegalStateException {
         if (v instanceof Question) { // Found a question
 
-            Question qq = (Question) v;
-            if (!qq.isSeen()) { // It is a new question
+            Question newQuestion = (Question) v;
+            if (!newQuestion.isSeen()) { // It is a new question
 
-                qcount++; // count the question
-                qq.setSeen(); // mark as seen
+                questionCount++; // count the question
+                newQuestion.setSeen(); // mark as seen
 
                 //ensure there is only one question per group
-                if (qcount > 1)
-                    throw new IllegalStateException("There can be only one question in a group: " + qq.getText());
+                if (questionCount > 1)
+                    throw new IllegalStateException("There can be only one question in a group: " + newQuestion.getText());
             }
-            q = qq; // remember the question
+            question = newQuestion; // remember the question
         }
     }
 

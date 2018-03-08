@@ -3,6 +3,7 @@ package eu.baboi.cristian.quiztest;
 import android.content.Context;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.view.View;
 
 /**
  * Created by cristi on 13.02.2018.
@@ -27,10 +28,13 @@ public class VerifyButton extends AppCompatButton {
     }
 
     // Force some attributes
-    private void init(Context c) {
+    private void init(Context context) {
         setFocusable(true);
         setFocusableInTouchMode(false);
-        setOnClickListener(MainActivity.getActivity(c));
+        setOnClickListener(MainActivity.getActivity(context));
+
+        if (getId() == View.NO_ID)
+            setId(MainActivity.getActivity(context).genID());
     }
 
 }

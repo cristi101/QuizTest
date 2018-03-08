@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -17,7 +18,10 @@ import android.view.inputmethod.InputMethodManager;
 public class TextAnswer extends android.support.v7.widget.AppCompatEditText implements Numbered {
     private int no = 0; // the variant number
     private String answer = ""; // the correct answer to the question
-    private boolean mCorrect; // previous state of isCorrect
+    private boolean oldCorrect; // previous state of isCorrect
+
+    // Custom attributes
+    // see https://developer.android.com/training/custom-views/create-view.html
 
     // The constructors
     public TextAnswer(Context context) {
@@ -31,7 +35,6 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
                 attrs,
                 R.styleable.TextAnswer,
                 0, 0);
-
         try {
             // find the value of the answer attribute
             setAnswer(a.getString(R.styleable.TextAnswer_answer));
@@ -47,7 +50,6 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
                 attrs,
                 R.styleable.TextAnswer,
                 0, 0);
-
         try {
             // find the value of the answer attribute
             setAnswer(a.getString(R.styleable.TextAnswer_answer));
@@ -58,7 +60,7 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     }
 
     // Perform some initialization
-    void init(Context c) {
+    private void init(Context context) {
         setSaveEnabled(true);
         setFocusable(true);
         setFocusableInTouchMode(true);
@@ -66,10 +68,10 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         setSelectAllOnFocus(true);
 
         //setImeOptions(EditorInfo.IME_ACTION_NEXT);
-        mCorrect = isCorrect();
+        oldCorrect = isCorrect();
 
         if (getId() == View.NO_ID)
-            setId(MainActivity.getActivity(c).genID());
+            setId(MainActivity.getActivity(context).genID());
     }
 
     // Remember the correct answer
@@ -96,23 +98,22 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         }
     }
 
-
     // Detect if there is a change in the truth value and notify the parent
     @Override
     public void truthChanged() {
         Log.e("TextAnswer truthChanged", "Updated the answer! " + getText().toString());
 
-        boolean cCorrect = isCorrect();
+        boolean newCorrect = isCorrect();
 
         // update the number of correct answers
-        Counter c = (Counter) getParent();
-        if (c != null && mCorrect != cCorrect)
-            if (cCorrect)
-                c.increment();
+        Counter multiChoiceQuestion = (Counter) getParent();
+        if (multiChoiceQuestion != null && oldCorrect != newCorrect)
+            if (newCorrect)
+                multiChoiceQuestion.increment();
             else
-                c.decrement();
+                multiChoiceQuestion.decrement();
 
-        mCorrect = cCorrect;
+        oldCorrect = newCorrect;
     }
 
     // This is to update the count when turned from portrait to landscape
@@ -122,6 +123,8 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         //In the constructor getText() is the value in the layout file, not the current value
         truthChanged(); // called to notify of the restored value of answer
     }
+
+    // SANTIER
 
     private void showKeyboard() {
         Log.e("TextAnswer", "SHOW keyboard");
@@ -150,7 +153,7 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     @Override
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
-        Log.e("TextAnswer", "FOCUS " + String.valueOf(focused) + " - " + getText().toString());
+        Log.e("TextAnswer", "onFocusChanged " + String.valueOf(focused) + " - " + getText().toString());
         focusChanged(focused);
     }
 
@@ -158,7 +161,7 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     @Override
     public void onEditorAction(int actionCode) {
         super.onEditorAction(actionCode);
-        Log.e("TextAnswer", "Action: " + String.valueOf(actionCode) + " - " + getText().toString());
+        Log.e("TextAnswer", "onEditorAction: " + String.valueOf(actionCode) + " - " + getText().toString());
         if (actionCode == EditorInfo.IME_ACTION_DONE) {
             Log.e("TextAnswer", "DONE " + getText().toString());
             //truthChanged();
@@ -166,15 +169,14 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     }
 
     // Check when back button
-//    @Override
-//    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
-//        Log.e("TextAnswer","BACK "+getText().toString());
-////        if (keyCode == KeyEvent.KEYCODE_BACK &&
-////                event.getAction() == KeyEvent.ACTION_UP) {
-////
-////            //truthChanged();
-////            return false;
-////        }
-//        return super.dispatchKeyEvent(event);
-//    }
+    @Override
+    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
+        Log.e("TextAnswer", "onKeyPreIme " + getText().toString());
+        if (keyCode == KeyEvent.KEYCODE_BACK &&
+                event.getAction() == KeyEvent.ACTION_UP) {
+            //truthChanged();
+            return false;
+        }
+        return super.dispatchKeyEvent(event);
+    }
 }

@@ -13,6 +13,9 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
     private int no = 0; // This is the variant number
     private boolean correct = false; //This is assumed to be incorrect
 
+    // Custom attributes
+    // see https://developer.android.com/training/custom-views/create-view.html
+
     // The constructors
     public MultiChoice(Context context) {
         super(context);
@@ -25,7 +28,6 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
                 attrs,
                 R.styleable.MultiChoice,
                 0, 0);
-
         try {
             // find the value of the correct attribute
             setCorrect(a.getBoolean(R.styleable.MultiChoice_correct, false));
@@ -41,7 +43,6 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
                 attrs,
                 R.styleable.MultiChoice,
                 0, 0);
-
         try {
             // find the value of the correct attribute
             setCorrect(a.getBoolean(R.styleable.MultiChoice_correct, false));
@@ -52,26 +53,24 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
     }
 
     // Perform some initialization
-    void init(Context c) {
+    private void init(Context context) {
         setSaveEnabled(true);
         setFocusable(true);
         setFocusableInTouchMode(false);
 
         if (getId() == View.NO_ID)
-            setId(MainActivity.getActivity(c).genID());
+            setId(MainActivity.getActivity(context).genID());
     }
 
+    // Mark the correct answer
+    public void setCorrect(boolean answer) {
+        correct = answer;
+    }
+
+    // The Numbered interface methods
     @Override
     public boolean isCorrect() {
         return correct == isChecked();
-    }
-
-
-    // The Numbered interface methods
-
-    // Mark the correct answer
-    public void setCorrect(boolean c) {
-        correct = c;
     }
 
     @Override
@@ -84,11 +83,11 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
     public void number(int num) {
         if (no == 0) {
             no = num;
-            Listener l = new Listener();
+            Listener listener = new Listener();
             // set the click listener
-            setOnClickListener(l);
+            setOnClickListener(listener);
             // Set the change listener
-            setOnCheckedChangeListener(l);
+            setOnCheckedChangeListener(listener);
         }
     }
 
@@ -97,13 +96,13 @@ public class MultiChoice extends android.support.v7.widget.AppCompatCheckBox imp
     public void truthChanged() { // Called from Listener
 
         // update the number of correct answers
-        Counter c = (Counter) getParent();
-        if (c != null)
-            if (isCorrect()) {
-                c.increment();
-            } else {
-                c.decrement();
-            }
+        Counter multiChoiceQuestion = (Counter) getParent();
+        if (multiChoiceQuestion != null)
+            if (isCorrect())
+                multiChoiceQuestion.increment();
+            else
+                multiChoiceQuestion.decrement();
+
     }
 
 }

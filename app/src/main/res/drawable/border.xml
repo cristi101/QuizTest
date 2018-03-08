@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:drawable="@drawable/red_selected" android:state_focused="true" app:state_correct="false" />
-    <item android:drawable="@drawable/green_selected" android:state_focused="true" app:state_correct="true" />
-    <item android:drawable="@drawable/red_border" app:state_correct="false" />
-    <item android:drawable="@drawable/green_border" app:state_correct="true" />
-</selector>

@@ -3,6 +3,7 @@ package eu.baboi.cristian.quiztest;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 
 /**
  * Created by cristi on 06.02.2018.
@@ -34,12 +35,13 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
 
     private void init(Context context) {
         setTextIsSelectable(true); // This also make the text focusable in both modes !!!
-        setFocusable(false);
-        setFocusableInTouchMode(false);
-
+        setFocusable(true);
+        setFocusableInTouchMode(true);
+        if (getId() == View.NO_ID)
+            setId(MainActivity.getActivity(context).genID());
     }
 
-
+    // Used to number the question just once
     public boolean isSeen() {
         return seen;
     }
@@ -48,26 +50,26 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
     }
 
     // set to true to enable disclosure of the correct answer
-    public void setDisclose(boolean c) {
-        if (disclose != c) { // Skip calling refresh if nothing changed
-            disclose = c;
+    public void setDisclose(boolean state) {
+        if (disclose != state) { // Skip calling refresh if nothing changed
+            disclose = state;
             refreshDrawableState(); // Update the background
         }
     }
 
-    @Override
-    public boolean isCorrect() {
-        return correct;
+    // used by the parent to inform of the parent correct status
+    public void setCorrect(boolean state) {
+        if (correct != state) { // Skip calling refresh if nothing changed
+            correct = state;
+            refreshDrawableState(); // Update the background
+        }
     }
 
     // The Numbered interface methods
 
-    // used by the parent to inform of the parent correct status
-    public void setCorrect(boolean c) {
-        if (correct != c) { // Skip calling refresh if nothing changed
-            correct = c;
-            refreshDrawableState(); // Update the background
-        }
+    @Override
+    public boolean isCorrect() {
+        return correct;
     }
 
     @Override
@@ -86,15 +88,13 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
         }
     }
 
-    // what to do with this ?
+    // Does nothing because we have setCorrect
     @Override
     public void truthChanged() {
-        // no need to inform parent
-        // The parent inform us
     }
 
 
-    // This should change the background of the question if correct and disclose are true
+    // This changes the background of the question if correct and disclose are true
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
         if (correct && disclose) {

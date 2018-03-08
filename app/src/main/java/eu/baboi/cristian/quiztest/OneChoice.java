@@ -13,6 +13,9 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     private int no = 0; // This is the variant number
     private boolean correct = false; //This is assumed to be incorrect
 
+    // Custom attributes
+    // see https://developer.android.com/training/custom-views/create-view.html
+
     // The constructors
     public OneChoice(Context context) {
         super(context);
@@ -50,26 +53,26 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     }
 
     // Perform some initialization
-    void init(Context c) {
+    private void init(Context context) {
         setSaveEnabled(true);
         setFocusable(true);
         setFocusableInTouchMode(false);
 
         if (getId() == View.NO_ID)
-            setId(MainActivity.getActivity(c).genID());
+            setId(MainActivity.getActivity(context).genID());
     }
+
+
+    // Mark the correct answer
+    public void setCorrect(boolean answer) {
+        correct = answer;
+    }
+
+    // The Numbered interface methods
 
     @Override
     public boolean isCorrect() {
         return correct == isChecked();
-    }
-
-
-    // The Numbered interface methods
-
-    // Mark the correct answer
-    public void setCorrect(boolean c) {
-        correct = c;
     }
 
     @Override
@@ -82,11 +85,11 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     public void number(int num) {
         if (no == 0) {
             no = num;
-            Listener l = new Listener();
+            Listener listener = new Listener();
             // set the click listener
-            setOnClickListener(l);
+            setOnClickListener(listener);
             // Set the change listener
-            setOnCheckedChangeListener(l);
+            setOnCheckedChangeListener(listener);
         }
     }
 
@@ -95,13 +98,13 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     public void truthChanged() { // Called from Listener
 
         // update the number of correct answers
-        Counter c = (Counter) getParent();
-        if (c != null)
-            if (isCorrect()) {
-                c.increment();
-            } else {
-                c.decrement();
-        }
+        Counter oneChoiceQuestion = (Counter) getParent();
+        if (oneChoiceQuestion != null)
+            if (isCorrect())
+                oneChoiceQuestion.increment();
+            else
+                oneChoiceQuestion.decrement();
+
     }
 
 }

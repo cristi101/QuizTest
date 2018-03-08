@@ -16,4 +16,7 @@
     <dimen name="radius">10dp</dimen>
     <dimen name="thick">4dp</dimen>
 
+    <!-- The frame padding -->
+    <dimen name="vertical">10dp</dimen>
+    <dimen name="horizontal">20dp</dimen>
 </resources>

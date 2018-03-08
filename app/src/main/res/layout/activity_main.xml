@@ -158,7 +158,10 @@
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
-                android:text="@string/q5a2" />
+                android:text="@string/q5a2">
+
+                <requestFocus />
+            </eu.baboi.cristian.quiztest.MultiChoice>
 
             <eu.baboi.cristian.quiztest.MultiChoice
                 style="@style/multiChoice"
@@ -183,7 +186,8 @@
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This is the check answers button -->
-
         <eu.baboi.cristian.quiztest.VerifyButton style="@style/button" />
     </eu.baboi.cristian.quiztest.Quiz>
+
+
 </ScrollView>

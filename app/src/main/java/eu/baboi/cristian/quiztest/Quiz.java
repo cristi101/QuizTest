@@ -62,20 +62,20 @@ public class Quiz extends LinearLayout implements Counter {
     public void countChildren(View v) throws IllegalStateException {
         if (v instanceof Numbered) { // Found a question or an answer
 
-            Numbered q = (Numbered) v;
-            if (!q.isNumbered()) { // The question is seen for the first time
+            Numbered question = (Numbered) v;
+            if (!question.isNumbered()) { // The question is seen for the first time
 
                 count++; // count the question
 
                 // throw error if it is not a question but an answer
-                if (!(q instanceof OneChoiceQuestion) && !(q instanceof MultiChoiceQuestion))
+                if (!(question instanceof OneChoiceQuestion) && !(question instanceof MultiChoiceQuestion))
                     throw new IllegalStateException("Only OnceChoiceQuestion and MultiChoiceQuestion can be children of a Quiz! : Question " + String.valueOf(count));
 
                 // set the question number and perform some initialization
-                q.number(count);
+                question.number(count);
 
                 // count the correct questions
-                if (q.isCorrect()) {
+                if (question.isCorrect()) {
                     increment();
                 }
             }

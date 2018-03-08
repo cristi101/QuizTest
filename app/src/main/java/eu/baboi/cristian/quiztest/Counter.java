@@ -9,7 +9,6 @@ import android.view.View;
 interface Counter {
     // update the counter of correct children
     void increment();
-
     void decrement();
 
     // Count some children and initialize them

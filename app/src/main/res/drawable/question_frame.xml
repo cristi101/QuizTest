@@ -7,13 +7,11 @@
 
     <solid android:color="@color/frame_bkgd" />
 
-    // Reduce the corner radius value
     <corners android:radius="@dimen/radius" />
 
     <padding
-        android:bottom="10dp"
-        android:left="20dp"
-        android:right="20dp"
-        android:top="10dp" />
-
+        android:bottom="@dimen/vertical"
+        android:left="@dimen/horizontal"
+        android:right="@dimen/horizontal"
+        android:top="@dimen/vertical" />
 </shape>
