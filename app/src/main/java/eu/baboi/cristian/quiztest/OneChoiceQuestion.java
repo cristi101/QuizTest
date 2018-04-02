@@ -21,9 +21,11 @@ public class OneChoiceQuestion extends RadioGroup implements Counter, Numbered {
     // The constructors
     public OneChoiceQuestion(Context context) {
         super(context);
+        setOrientation(RadioGroup.VERTICAL);
     }
     public OneChoiceQuestion(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setOrientation(RadioGroup.VERTICAL);
     }
 
     // The Numbered interface methods

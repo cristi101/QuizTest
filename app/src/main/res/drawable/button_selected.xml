@@ -4,7 +4,7 @@
     <stroke
         android:width="@dimen/thick"
         android:color="@color/button_on" />
-    <solid android:color="@color/button_selected" />
+    <solid android:color="@color/button_off" />
     <corners android:radius="@dimen/radius" />
     <padding
         android:bottom="10dp"

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#795548</color>
+    <color name="colorPrimaryDark">#5d4037</color>
+    <color name="colorAccent">#ed2a4a</color>
+    <color name="navigationBarColor">#3e2723</color>
 
     <color name="frame_bkgd">#40FFffff</color>
 
     <color name="text">@android:color/black</color>
-    <color name="text_bkgd">#fff3dd</color>
+    <color name="text_bkgd">#f7e2d1</color>
     <color name="text_selected">@android:color/white</color>
 
-    <color name="button_off">#ed2a4a</color>
+    <color name="button_off">@color/colorAccent</color>
     <color name="button_on">#369743</color>
-    <color name="button_selected">@android:color/white</color>
 </resources>

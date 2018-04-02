@@ -5,11 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+
 
 /**
  * Created by cristi on 06.02.2018.
@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 public class TextAnswer extends android.support.v7.widget.AppCompatEditText implements Numbered {
     private int no = 0; // the variant number
     private String answer = ""; // the correct answer to the question
+    private String text = "";
     private boolean oldCorrect; // previous state of isCorrect
 
     // Custom attributes
@@ -61,13 +62,17 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
 
     // Perform some initialization
     private void init(Context context) {
+        // force some attributes
         setSaveEnabled(true);
+        setTextIsSelectable(false);// must be false so that the soft keyboard appear
+        setSelectAllOnFocus(true);// selects all field content on focus
         setFocusable(true);
-        setFocusableInTouchMode(true);
-        setTextIsSelectable(true); // This also make the text focusable in both modes !!!
-        setSelectAllOnFocus(true);
+        setFocusableInTouchMode(true);// must be true so that the field is editable in touch mode
+        setInputType(EditorInfo.TYPE_CLASS_TEXT); //text input
+        setSingleLine();//only one line
+        // set ime option
+        setImeOptions(EditorInfo.IME_ACTION_DONE|EditorInfo.IME_FLAG_NO_FULLSCREEN);
 
-        //setImeOptions(EditorInfo.IME_ACTION_NEXT);
         oldCorrect = isCorrect();
 
         if (getId() == View.NO_ID)
@@ -101,8 +106,6 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     // Detect if there is a change in the truth value and notify the parent
     @Override
     public void truthChanged() {
-        Log.e("TextAnswer truthChanged", "Updated the answer! " + getText().toString());
-
         boolean newCorrect = isCorrect();
 
         // update the number of correct answers
@@ -124,28 +127,22 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
         truthChanged(); // called to notify of the restored value of answer
     }
 
-    // SANTIER
-
     private void showKeyboard() {
-        Log.e("TextAnswer", "SHOW keyboard");
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(this, 0);
     }
 
     private void hideKeyboard() {
-        Log.e("TextAnswer", "HIDE keyboard");
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getWindowToken(), 0);
     }
 
     private void focusChanged(boolean focused) {
         if (focused) {
-            Log.e("TextAnswer", "FOCUS On " + getText().toString());
-            //showKeyboard();
+            text=getText().toString();// save the current content of the field
         } else {
-            Log.e("TextAnswer", "FOCUS Off " + getText().toString());
-            truthChanged(); //record the changes
-            // hideKeyboard();
+            hideKeyboard();//needed in case the user click on other control
+            setTextKeepState(text);// restore the text value on exit
         }
     }
 
@@ -153,30 +150,32 @@ public class TextAnswer extends android.support.v7.widget.AppCompatEditText impl
     @Override
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
-        Log.e("TextAnswer", "onFocusChanged " + String.valueOf(focused) + " - " + getText().toString());
         focusChanged(focused);
     }
 
-    // Check when action done
+    // Action Done or press Enter is the only way to enter new text
     @Override
     public void onEditorAction(int actionCode) {
         super.onEditorAction(actionCode);
-        Log.e("TextAnswer", "onEditorAction: " + String.valueOf(actionCode) + " - " + getText().toString());
         if (actionCode == EditorInfo.IME_ACTION_DONE) {
-            Log.e("TextAnswer", "DONE " + getText().toString());
-            //truthChanged();
+            text=getText().toString();//save the new content
+            truthChanged();//record the change
         }
     }
 
-    // Check when back button
+    // Check when Back button is pressed and cancel the edit
+    // Check when Enter is pressed and record the change
     @Override
     public boolean onKeyPreIme(int keyCode, KeyEvent event) {
-        Log.e("TextAnswer", "onKeyPreIme " + getText().toString());
+        int action=event.getAction();
         if (keyCode == KeyEvent.KEYCODE_BACK &&
-                event.getAction() == KeyEvent.ACTION_UP) {
-            //truthChanged();
-            return false;
+                action == KeyEvent.ACTION_UP) {
+            setTextKeepState(text);// restore the previous value
+        }else if(keyCode == KeyEvent.KEYCODE_ENTER &&
+                action == KeyEvent.ACTION_UP){
+            text=getText().toString();
+            truthChanged();
         }
-        return super.dispatchKeyEvent(event);
+        return false;
     }
 }

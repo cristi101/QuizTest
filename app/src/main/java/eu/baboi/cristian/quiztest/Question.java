@@ -34,6 +34,8 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
     }
 
     private void init(Context context) {
+        // force some attributes
+        setSelectAllOnFocus(false);// selects all field content on focus
         setTextIsSelectable(true); // This also make the text focusable in both modes !!!
         setFocusable(true);
         setFocusableInTouchMode(true);

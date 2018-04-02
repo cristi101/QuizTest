@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/navigationBarColor</item>
         <!-- Text selection color -->
         <item name="android:textColorHighlight">@android:color/holo_blue_light</item>
     </style>
@@ -16,11 +17,15 @@
         <item name="android:fillViewport">true</item>
     </style>
 
+    <!--
+     Background textures from http://www.fuzzimo.com/about
+     http://www.fuzzimo.com/free-seamless-denim-jeans-textures/
+     http://www.fuzzimo.com/free-hi-res-canvas-textures-seamless/
+    -->
     <style name="quiz">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@drawable/bkgd_tile</item>
-        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="group">
@@ -28,11 +33,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/group_margin</item>
         <item name="android:background">@drawable/question_frame</item>
-        <item name="android:orientation">vertical</item>
         <item name="android:padding">@dimen/group_padding</item>
     </style>
 
-    <!-- SANTIER -->
     <style name="question">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -42,52 +45,12 @@
         <item name="android:background">@drawable/question_background</item>
         <item name="android:textColor">@color/text</item>
         <item name="android:textStyle">bold</item>
-
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:imeActionLabel">Ceva</item>
-        <item name="android:imeActionId">5</item>
-        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
-
-
     </style>
 
-    <style name="text">
+    <style name="answer">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:inputType">text</item>
-        <item name="android:lines">1</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:maxLength">20</item>
-
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:imeActionLabel">Ceva</item>
-        <item name="android:imeActionId">5</item>
-        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
-
-    </style>
-
-    <style name="oneChoice">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/text</item>
-
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:imeActionLabel">Ceva</item>
-        <item name="android:imeActionId">5</item>
-        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
-
-    </style>
-
-    <style name="multiChoice">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/text</item>
-
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:imeActionLabel">Ceva</item>
-        <item name="android:imeActionId">5</item>
-        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
     </style>
 
     <style name="button">
@@ -97,10 +60,5 @@
         <item name="android:text">@string/button</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:background">@drawable/button</item>
-
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:imeActionLabel">Ceva</item>
-        <item name="android:imeActionId">5</item>
-        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
     </style>
 </resources>

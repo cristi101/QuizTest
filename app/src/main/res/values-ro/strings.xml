@@ -5,32 +5,105 @@
     <string name="title">Chestionar</string>
     <string name="button">Verifică!</string>
 
-    <string name="q1">Ce e asta ?</string>
-    <string name="q1a1">Al treilea proiect pentru Udacity Android Basics challenge.</string>
-    <string name="q1a2">Un test IQ.</string>
-    <string name="q1a3">Un exemplu de chestionar.</string>
+    <!-- Întrebările și răspunsurile  -->
 
-    <string name="q2">Cine a făcut acest chestionar ?</string>
-    <string name="q2a1">Este furat de undeva din Internet.</string>
-    <string name="q2a2">Un tip din Slatina, România.</string>
-    <string name="q2a3">Un programator de Android începător.</string>
+    <!-- Întrebări despre XML  -->
+    <string name="question1">XML este o abreviere pentru: </string>
+    <string name="question1_answer1">eXtraordinary Moon Landing</string>
+    <string name="question1_answer2">eXceptional Machine Language</string>
+    <string name="question1_answer3">eXtensible Markup Language</string>
 
-    <string name="q3">Cât a durat realizarea acestui chestionar ?</string>
-    <string name="q3a1">2 zile</string>
-    <string name="q3a2">2 săptămâni</string>
-    <string name="q3a3">2 luni</string>
+    <string name="question2">Ce este XML ?</string>
+    <string name="question2_answer1">Un limbaj folosit pentru descrierea resurselor aplicațiilor Android.</string>
+    <string name="question2_answer2">O notație pentru fragmente de informație numite elemente, structurate ca o ierarhie.</string>
+    <string name="question2_answer3">Un format simplu bazat pe text derivat din SGML.</string>
 
-    <string name="q4">De ce nu a fost făcut la timp ?</string>
-    <string name="q4a1">Slack și Forum-ul dau dependență.</string>
-    <string name="q4a2">Autorul a avut dureri de cap două zile.</string>
-    <string name="q4a3">Autorul a presupus că e încă tânăr.</string>
+    <string name="question3">Care din urmâtoarele sunt comentarii XML ?</string>
+    <string name="question3_answer1">// Acesta este un comentariu </string>
+    <string name="question3_answer2">/* Acesta este un comentariu */</string>
+    <string name="question3_answer3">&lt;!-- Acesta este un comentariu --&gt;</string>
 
-    <string name="q5">De ce aceste întrebări?</string>
-    <string name="q5a1">Întrebările sunt doar un exemplu.</string>
-    <string name="q5a2">Este dificil să le alegi.</string>
-    <string name="q5a3">Pentru că întrebările pot fi înlocuite ușor.</string>
+    <string name="question4">Care din următoarele sunt etichete XML ?</string>
+    <string name="question4_answer1">{etichetă} </string>
+    <string name="question4_answer2">&lt;etichetă/&gt;</string>
+    <string name="question4_answer3">[etichetă]</string>
 
-    <string name="q6">Care este numele autorului ?</string>
-    <string name="q6hint">Introduceți numele întreg</string>
-    <string name="name">Cristian Baboi</string>
+    <!-- Întrebări despre Java -->
+    <string name="question5">Ce este Java ?</string>
+    <string name="question5_answer1">Cea mai populată insulă din lume.</string>
+    <string name="question5_answer2">Un limbaj folosit pentru a face interactive aplicațiile Android.</string>
+    <string name="question5_answer3">Un limbaj artificial folosit pentru a da instrucțiuni unui calculator.</string>
+
+    <string name="question6">Care din următoarele sunt comentarii Java ?</string>
+    <string name="question6_answer1">// Acesta este un comentariu </string>
+    <string name="question6_answer2">/* Acesta este un comentariu */</string>
+    <string name="question6_answer3">&lt;!-- Acesta este un comentariu  --&gt;</string>
+
+    <string name="question7">Ce fel de limbaj este Java ?</string>
+    <string name="question7_answer1">Un limbaj declarativ pentru fișiere de configurare.</string>
+    <string name="question7_answer2">Un limbaj imperativ, în care calculul este exprimat printr-o serie de modificări de stare.</string>
+    <string name="question7_answer3">Un limbaj artificial folosit pentru descrierea ordinii instrucțiunilor de executat de un computer.</string>
+
+    <string name="question8">Cum se reprezintă o stare în Java ?</string>
+    <string name="question8_answer1">printr-un raport scris</string>
+    <string name="question8_answer2">prin valori memorate în variabile</string>
+
+    <string name="question9">Cum se numnește reprezentarea unei valori fixe în Java ?</string>
+    <string name="question9_hint">Introduceți răspunsul aici</string>
+    <string name="question9_answer">literal</string>
+
+    <string name="question10">Ce instrucțiuni Java modifică valoarea unei variabile ?</string>
+    <string name="question10_answer1">o instrucțiune de apel de metodă</string>
+    <string name="question10_answer2">o instrucțiune de atribuire</string>
+    <string name="question10_answer3">o instrucțiune de control al fluxului</string>
+
+    <string name="question11">Ce instrucțiuni Java determină ordinea instrucțiunilor executate ?</string>
+    <string name="question11_answer1">o instrucțiune de apel de metodă</string>
+    <string name="question11_answer2">o instrucțiune de atribuire</string>
+    <string name="question11_answer3">o instrucțiune de control al fluxului</string>
+
+    <string name="question12">Ce tipuri de variabile Java memorează numere ?</string>
+    <string name="question12_answer1">int, long</string>
+    <string name="question12_answer2">float, double</string>
+    <string name="question12_answer3">char, String</string>
+
+    <string name="question13">Ce operatori Java întorc valori logice ?</string>
+    <string name="question13_answer1">+&#160;&#160;&#160;-&#160;&#160;&#160;*&#160;&#160;&#160;/&#160;&#160;&#160;%</string>
+    <string name="question13_answer2">&amp;&amp;&#160;&#160;&#160;||&#160;&#160;&#160;!</string>
+    <string name="question13_answer3">&amp;&#160;&#160;&#160;|&#160;&#160;&#160;~&#160;&#160;&#160;^</string>
+    <string name="question13_answer4">==&#160;&#160;&#160;&lt;&#160;&#160;&#160;&gt;&#160;&#160;&#160;&lt;=&#160;&#160;&#160;&gt;=&#160;&#160;&#160;!=&#160;&#160;&#160;instanceof</string>
+
+    <string name="question14">Ce cuvânt cheie Java este folosit pentru a indica o metodă care nu întoarce nici o valoare ?</string>
+    <string name="question14_hint">Introduceți răspunsul aici</string>
+    <string name="question14_answer">void</string>
+
+    <!-- Întrebări despre Android -->
+    <string name="question15">Ce este un "View" în Android ?</string>
+    <string name="question15_answer1">O zonă rectangulară a ecranului, desenată de un obiect Java.</string>
+    <string name="question15_answer2">Un element al interfeței cu utilizatorul.</string>
+    <string name="question15_answer3">O fotografie pe ecran.</string>
+
+    <string name="question16">Ce "View-uri" Android sunt folosite pentru introducerea de date ?</string>
+    <string name="question16_answer1">TextView</string>
+    <string name="question16_answer2">ImageView</string>
+    <string name="question16_answer3">EditText</string>
+
+    <string name="question17">Cum se numește procesul de creare a obiectelor Java din XML ?</string>
+    <string name="question17_hint">Introduceți răspunsul aici</string>
+    <string name="question17_answer">inflation</string>
+
+    <string name="question18">Ce metodă a unei activități Android este folosită pentru a obține o referință la un "View" definit în fișierul de resurse al activității ?</string>
+    <string name="question18_answer1">getView</string>
+    <string name="question18_answer2">getViewFromId</string>
+    <string name="question18_answer3">findViewById</string>
+
+    <string name="question19">Ce metodă a unei activități Android este folosită pentru a-i atașa o interfață cu utilizatorul ?</string>
+    <string name="question19_answer1">setContent</string>
+    <string name="question19_answer2">setContentView</string>
+    <string name="question19_answer3">setViewContent</string>
+
+    <string name="question20">Cum se poate menționa o resursă Android în Java  ?</string>
+    <string name="question20_answer1">R.tipResursă.numeResursă</string>
+    <string name="question20_answer2">\@tipResursă/numeResursă</string>
+    <string name="question20_answer3">\?tipResursă/numeResursă</string>
 </resources>

@@ -28,11 +28,13 @@ public class Quiz extends LinearLayout implements Counter {
 
     public Quiz(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public Quiz(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
     // Get the Quiz results

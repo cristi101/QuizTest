@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onSaveInstanceState(Bundle out) {
+        // prevent scrolling to the focused view - remove the focus
+        View view= getCurrentFocus();
+        if(view!=null)
+            view.clearFocus();
+        // save the state
         super.onSaveInstanceState(out);
         //  save disclosed state
         out.putBoolean(DISCLOSED, disclosed);
@@ -111,8 +116,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Turn on the disclosed state
         if (!disclosed) {
-            scrollView.scrollTo(0, 0); // Go to the beginning
-            disclose();
+            disclose(); // turn on disclosed state
+            // Go to the beginning
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.scrollTo(0, 0);
+                }
+            });
         }
 
         // Display the quiz result
@@ -130,8 +141,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // The Check Answers button onClick
     @Override
     public void onClick(View v) {
-        // Get out of any EditText
-        if (!v.isFocused()) v.requestFocusFromTouch();
+        if (!v.isFocused())// Get out of any EditText
+            v.requestFocusFromTouch();
         checkAnswers(v);
     }
+
 }

@@ -24,19 +24,23 @@ public class MultiChoiceQuestion extends LinearLayout implements Counter, Number
     // The constructors
     public MultiChoiceQuestion(Context context) {
         super(context);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
     public MultiChoiceQuestion(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
     public MultiChoiceQuestion(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public MultiChoiceQuestion(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        setOrientation(LinearLayout.VERTICAL);
     }
 
 

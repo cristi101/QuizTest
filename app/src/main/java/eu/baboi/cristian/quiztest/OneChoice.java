@@ -54,7 +54,10 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
 
     // Perform some initialization
     private void init(Context context) {
+        // force some attributes
         setSaveEnabled(true);
+        setTextIsSelectable(false);// must be false so that the soft keyboard appear
+        setSelectAllOnFocus(false);// selects all field content on focus
         setFocusable(true);
         setFocusableInTouchMode(false);
 
@@ -94,6 +97,7 @@ public class OneChoice extends android.support.v7.widget.AppCompatRadioButton im
     }
 
     // Detect if there is a change in the truth value and notify the parent
+    // Also called by the system on restore from rotation
     @Override
     public void truthChanged() { // Called from Listener
 

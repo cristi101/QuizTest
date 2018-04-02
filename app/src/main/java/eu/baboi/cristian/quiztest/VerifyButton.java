@@ -29,12 +29,14 @@ public class VerifyButton extends AppCompatButton {
 
     // Force some attributes
     private void init(Context context) {
+        // Force some attributes
+        setTextIsSelectable(false);// must be false so that the soft keyboard appear
+        setSelectAllOnFocus(false);// selects all field content on focus
         setFocusable(true);
         setFocusableInTouchMode(false);
-        setOnClickListener(MainActivity.getActivity(context));
 
+        setOnClickListener(MainActivity.getActivity(context));
         if (getId() == View.NO_ID)
             setId(MainActivity.getActivity(context).genID());
     }
-
 }

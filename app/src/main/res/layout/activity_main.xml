@@ -6,8 +6,7 @@
     style="@style/scroll"
     tools:context="eu.baboi.cristian.quiztest.MainActivity">
 
-    <eu.baboi.cristian.quiztest.Quiz
-        style="@style/quiz">
+    <eu.baboi.cristian.quiztest.Quiz style="@style/quiz">
 
         <TextView
             android:layout_width="match_parent"
@@ -19,175 +18,356 @@
             android:textColor="@color/text"
             android:textSize="@dimen/title_size" />
 
-        <!-- This starts a multi choice question -->
-        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
-
+        <!-- XML related questions -->
+        <!-- This starts a one choice question -->
+        <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
             <!-- This is the question -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q1" />
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question1" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q1a1"
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question1_answer1" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question1_answer2" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question1_answer3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question2" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question2_answer1"
                 app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:text="@string/q1a2" />
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question2_answer2"
+                app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q1a3"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question2_answer3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
-
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q2" />
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question3" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:text="@string/q2a1" />
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question3_answer1" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q2a2"
-                app:correct="true" />
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question3_answer2" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q2a3"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question3_answer3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-        <!-- TREBUIE SCOS DE AICI -->
-        <!-- This starts a multiple choices question -->
+        <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
-
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q6" />
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question4" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.TextAnswer
-                android:id="@+id/unu"
-                style="@style/text"
-                android:hint="@string/q6hint"
-                app:answer="@string/name" />
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question4_answer1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question4_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question4_answer3" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- Java related questions -->
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question5" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question5_answer1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question5_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question5_answer3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question6" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question6_answer1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question6_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question6_answer3" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question7" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question7_answer1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question7_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question7_answer3"
+                app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- This starts a one choice question -->
         <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
-
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q3" />
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question8" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.OneChoice
-                style="@style/oneChoice"
-                android:text="@string/q3a1"
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question8_answer1" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question8_answer2"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question9" />
+
+            <eu.baboi.cristian.quiztest.TextAnswer style="@style/answer"
+                android:hint="@string/question9_hint"
+                app:answer="@string/question9_answer" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question10" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question10_answer1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question10_answer2"
                 app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.OneChoice
-                style="@style/oneChoice"
-                android:text="@string/q3a2" />
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question10_answer3" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-            <eu.baboi.cristian.quiztest.OneChoice
-                style="@style/oneChoice"
-                android:text="@string/q3a3" />
-        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question11" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question11_answer1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question11_answer2" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question11_answer3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
 
         <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
-
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q4" />
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question12" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q4a1"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question12_answer1"
                 app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q4a2"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question12_answer2"
                 app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q4a3"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question12_answer3" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question13" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question13_answer1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question13_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question13_answer3" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question13_answer4"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-
-        <!-- This starts a multiple choices question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
 
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q5" />
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question14" />
+
+            <eu.baboi.cristian.quiztest.TextAnswer style="@style/answer"
+                android:hint="@string/question14_hint"
+                app:answer="@string/question14_answer" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question15" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q5a1"
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question15_answer1"
                 app:correct="true" />
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:text="@string/q5a2">
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question15_answer2"
+                app:correct="true" />
 
-                <requestFocus />
-            </eu.baboi.cristian.quiztest.MultiChoice>
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question15_answer3" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-            <eu.baboi.cristian.quiztest.MultiChoice
-                style="@style/multiChoice"
-                android:checked="true"
-                android:text="@string/q5a3"
+        <!-- This starts a multi choice question -->
+        <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question16" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question16_answer1" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question16_answer2" />
+
+            <eu.baboi.cristian.quiztest.MultiChoice style="@style/answer"
+                android:text="@string/question16_answer3"
                 app:correct="true" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
-        <!-- This starts a multiple choices question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
 
-            <!-- This is the question  -->
-            <eu.baboi.cristian.quiztest.Question
-                style="@style/question"
-                android:text="@string/q6" />
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question17" />
+
+            <eu.baboi.cristian.quiztest.TextAnswer style="@style/answer"
+                android:hint="@string/question17_hint"
+                app:answer="@string/question17_answer" />
+        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- This starts a one choice question -->
+        <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question18" />
 
             <!-- This question possible answers follow  -->
-            <eu.baboi.cristian.quiztest.TextAnswer
-                style="@style/text"
-                android:hint="@string/q6hint"
-                app:answer="@string/name" />
-        </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question18_answer1" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question18_answer2" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question18_answer3"
+                app:correct="true" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+
+        <!-- This starts a one choice question -->
+        <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question19" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question19_answer1" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question19_answer2"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question19_answer3" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
+
+        <!-- This starts a one choice question -->
+        <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
+            <!-- This is the question -->
+            <eu.baboi.cristian.quiztest.Question style="@style/question"
+                android:text="@string/question20" />
+
+            <!-- This question possible answers follow  -->
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question20_answer1"
+                app:correct="true" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question20_answer2" />
+
+            <eu.baboi.cristian.quiztest.OneChoice style="@style/answer"
+                android:text="@string/question20_answer3" />
+        </eu.baboi.cristian.quiztest.OneChoiceQuestion>
 
         <!-- This is the check answers button -->
         <eu.baboi.cristian.quiztest.VerifyButton style="@style/button" />
     </eu.baboi.cristian.quiztest.Quiz>
-
-
 </ScrollView>
