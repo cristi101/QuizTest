@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             throw new IllegalStateException("The top view must be a ScrollView!");
         scrollView = (ScrollView) view;
 
+        // Set an id to the scroll view if it does not already have one
+        if (scrollView.getId() == View.NO_ID)
+            scrollView.setId(genID());
+
         // Find the Quiz
         view = scrollView.getChildAt(0);
         if (!(view instanceof Quiz))
@@ -78,8 +82,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(out);
         //  save disclosed state
         out.putBoolean(DISCLOSED, disclosed);
-        // Save the scroll position
-        out.putIntArray(SCROLL_POSITION, new int[]{scrollView.getScrollX(), scrollView.getScrollY()});
+
+        // Save the scroll position - there is no need for this if the scrollview has an id
+        if (scrollView.getId() == View.NO_ID)
+            out.putIntArray(SCROLL_POSITION, new int[]{scrollView.getScrollX(), scrollView.getScrollY()});
     }
 
 
@@ -91,15 +97,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         disclosed = in.getBoolean(DISCLOSED);
         if (disclosed) disclose();
 
-        // Restore the scroll position
-        final int[] pos = in.getIntArray(SCROLL_POSITION);
-        if (pos != null) {
-            scrollView.post(new Runnable() {
-                @Override
-                public void run() {
-                    scrollView.scrollTo(pos[0], pos[1]);
-                }
-            });
+        // Restore the scroll position - no need for this if the scrollview has an id
+        if (scrollView.getId() == View.NO_ID) {
+            final int[] pos = in.getIntArray(SCROLL_POSITION);
+            if (pos != null) {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.scrollTo(pos[0], pos[1]);
+                    }
+                });
+            }
+
         }
     }
 

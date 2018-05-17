@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -16,6 +17,11 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:fillViewport">true</item>
     </style>
+
+    <!--
+        Source for how to design borders in Android
+        https://stackoverflow.com/questions/3496269/how-do-i-put-a-border-around-an-android-textview
+    -->
 
     <!--
      Background textures from http://www.fuzzimo.com/about
