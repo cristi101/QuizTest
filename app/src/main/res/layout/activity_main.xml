@@ -16,9 +16,20 @@
             android:gravity="center"
             android:text="@string/title"
             android:textColor="@color/text"
-            android:textSize="@dimen/title_size" />
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold" />
 
         <!-- XML related questions -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/title_margin"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="@string/xml"
+            android:textColor="@color/text"
+            android:textSize="@dimen/title_size" />
+
         <!-- This starts a one choice question -->
         <eu.baboi.cristian.quiztest.OneChoiceQuestion style="@style/group">
             <!-- This is the question -->
@@ -94,6 +105,16 @@
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
 
         <!-- Java related questions -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/title_margin"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="@string/java"
+            android:textColor="@color/text"
+            android:textSize="@dimen/title_size" />
+
         <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">
             <!-- This is the question -->
@@ -265,6 +286,18 @@
                 android:hint="@string/question14_hint"
                 app:answer="@string/question14_answer" />
         </eu.baboi.cristian.quiztest.MultiChoiceQuestion>
+
+        <!-- Android questions  -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/title_margin"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="@string/android"
+            android:textColor="@color/text"
+            android:textSize="@dimen/title_size" />
+
 
         <!-- This starts a multi choice question -->
         <eu.baboi.cristian.quiztest.MultiChoiceQuestion style="@style/group">

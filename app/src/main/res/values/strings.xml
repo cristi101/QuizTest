@@ -3,6 +3,10 @@
     <string name="app_answer">You answered correctly \nto <xliff:g example="5" id="correct">%1$d</xliff:g> questions out of <xliff:g example="7" id="count">%2$d</xliff:g> !</string>
 
     <string name="title">Quiz time!</string>
+    <string name="xml">XML</string>
+    <string name="java">Java</string>
+    <string name="android">Android</string>
+
     <string name="button">Check answers!</string>
 
     <!-- The questions and answers for the Quiz -->

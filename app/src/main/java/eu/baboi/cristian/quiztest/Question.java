@@ -95,6 +95,11 @@ public class Question extends android.support.v7.widget.AppCompatTextView implem
     public void truthChanged() {
     }
 
+    /*
+     *  Source for how to make stateful backgrounds in Android
+     *  http://charlesharley.com/2012/programming/custom-drawable-states-in-android
+     *
+     * */
 
     // This changes the background of the question if correct and disclose are true
     @Override
