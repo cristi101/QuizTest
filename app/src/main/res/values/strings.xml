@@ -57,14 +57,14 @@
     <string name="question9_answer">literal</string>
 
     <string name="question10">What Java statements change the value of a variable ?</string>
-    <string name="question10_answer1">a call method statement</string>
-    <string name="question10_answer2">an assignment statement</string>
-    <string name="question10_answer3">a control flow statement</string>
+    <string name="question10_answer1">Call statements</string>
+    <string name="question10_answer2">Assignment statements</string>
+    <string name="question10_answer3">Control flow statements</string>
 
     <string name="question11">What Java statements determine the order of instructions executed ?</string>
-    <string name="question11_answer1">a call method statement</string>
-    <string name="question11_answer2">an assignment statement</string>
-    <string name="question11_answer3">a control flow statement</string>
+    <string name="question11_answer1">Call statements</string>
+    <string name="question11_answer2">Assignment statements</string>
+    <string name="question11_answer3">Control flow statements</string>
 
     <string name="question12">What types of Java variables store numbers ?</string>
     <string name="question12_answer1">int, long</string>

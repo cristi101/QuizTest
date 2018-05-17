@@ -18,7 +18,7 @@
     <string name="question2_answer2">O notație pentru fragmente de informație numite elemente, structurate ca o ierarhie.</string>
     <string name="question2_answer3">Un format simplu bazat pe text derivat din SGML.</string>
 
-    <string name="question3">Care din urmâtoarele sunt comentarii XML ?</string>
+    <string name="question3">Care din următoarele sunt comentarii XML ?</string>
     <string name="question3_answer1">// Acesta este un comentariu </string>
     <string name="question3_answer2">/* Acesta este un comentariu */</string>
     <string name="question3_answer3">&lt;!-- Acesta este un comentariu --&gt;</string>
@@ -44,23 +44,23 @@
     <string name="question7_answer2">Un limbaj imperativ, în care calculul este exprimat printr-o serie de modificări de stare.</string>
     <string name="question7_answer3">Un limbaj artificial folosit pentru descrierea ordinii instrucțiunilor de executat de un computer.</string>
 
-    <string name="question8">Cum se reprezintă o stare în Java ?</string>
-    <string name="question8_answer1">printr-un raport scris</string>
+    <string name="question8">Cum este reprezentată o stare în Java ?</string>
+    <string name="question8_answer1">printr-un raport</string>
     <string name="question8_answer2">prin valori memorate în variabile</string>
 
-    <string name="question9">Cum se numnește reprezentarea unei valori fixe în Java ?</string>
+    <string name="question9">Cum se numește reprezentarea unei valori fixe în Java ?</string>
     <string name="question9_hint">Introduceți răspunsul aici</string>
     <string name="question9_answer">literal</string>
 
     <string name="question10">Ce instrucțiuni Java modifică valoarea unei variabile ?</string>
-    <string name="question10_answer1">o instrucțiune de apel de metodă</string>
-    <string name="question10_answer2">o instrucțiune de atribuire</string>
-    <string name="question10_answer3">o instrucțiune de control al fluxului</string>
+    <string name="question10_answer1">Instrucțiunile de apel</string>
+    <string name="question10_answer2">Instrucțiunile de atribuire</string>
+    <string name="question10_answer3">Instrucțiunile de control</string>
 
     <string name="question11">Ce instrucțiuni Java determină ordinea instrucțiunilor executate ?</string>
-    <string name="question11_answer1">o instrucțiune de apel de metodă</string>
-    <string name="question11_answer2">o instrucțiune de atribuire</string>
-    <string name="question11_answer3">o instrucțiune de control al fluxului</string>
+    <string name="question11_answer1">Instrucțiunile de apel</string>
+    <string name="question11_answer2">Instrucțiunile de atribuire</string>
+    <string name="question11_answer3">Instrucțiunile de control</string>
 
     <string name="question12">Ce tipuri de variabile Java memorează numere ?</string>
     <string name="question12_answer1">int, long</string>
@@ -73,7 +73,7 @@
     <string name="question13_answer3">&amp;&#160;&#160;&#160;|&#160;&#160;&#160;~&#160;&#160;&#160;^</string>
     <string name="question13_answer4">==&#160;&#160;&#160;&lt;&#160;&#160;&#160;&gt;&#160;&#160;&#160;&lt;=&#160;&#160;&#160;&gt;=&#160;&#160;&#160;!=&#160;&#160;&#160;instanceof</string>
 
-    <string name="question14">Ce cuvânt cheie Java este folosit pentru a indica o metodă care nu întoarce nici o valoare ?</string>
+    <string name="question14">Ce cuvânt rezervat Java este folosit pentru a indica o metodă care nu întoarce nici o valoare ?</string>
     <string name="question14_hint">Introduceți răspunsul aici</string>
     <string name="question14_answer">void</string>
 
