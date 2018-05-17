@@ -7,26 +7,6 @@
 
     <!-- The questions and answers for the Quiz -->
 
-    <!-- XML related questions -->
-    <string name="question1">XML is an abbreviation for: </string>
-    <string name="question1_answer1">eXtraordinary Moon Landing</string>
-    <string name="question1_answer2">eXceptional Machine Language</string>
-    <string name="question1_answer3">eXtensible Markup Language</string>
-
-    <string name="question2">What is XML ?</string>
-    <string name="question2_answer1">A language used to describe resources for Android apps.</string>
-    <string name="question2_answer2">A notation for pieces of information called elements, structured as a hierarchy.</string>
-    <string name="question2_answer3">A simple text based format derived from SGML.</string>
-
-    <string name="question3">Which of the following are XML comments ?</string>
-    <string name="question3_answer1">// This is a comment </string>
-    <string name="question3_answer2">/* This is a comment */</string>
-    <string name="question3_answer3">&lt;!-- This is a comment --&gt;</string>
-
-    <string name="question4">Which of the following are XML tags ?</string>
-    <string name="question4_answer1">{tag} </string>
-    <string name="question4_answer2">&lt;tag/&gt;</string>
-    <string name="question4_answer3">[tag]</string>
 
     <!-- Java related questions -->
     <string name="question5">What is Java ?</string>
@@ -76,35 +56,5 @@
     <string name="question14">What Java keyword is used to specify that a method has no return value ?</string>
     <string name="question14_hint">Enter the answer here</string>
     <string name="question14_answer">void</string>
-
-    <!-- Android related questions -->
-    <string name="question15">What is a view in Android ?</string>
-    <string name="question15_answer1">A rectangular area of the screen, drawn by a Java object.</string>
-    <string name="question15_answer2">An element of the user interface.</string>
-    <string name="question15_answer3">A photo on the screen.</string>
-
-    <string name="question16">Which Android views are used for data entry ?</string>
-    <string name="question16_answer1">TextView</string>
-    <string name="question16_answer2">ImageView</string>
-    <string name="question16_answer3">EditText</string>
-
-    <string name="question17">What it is called the process of creating Java objects from XML ?</string>
-    <string name="question17_hint">Enter the answer here</string>
-    <string name="question17_answer">inflation</string>
-
-    <string name="question18">Which Android Activity method is used to get a reference to a view defined in the activity\'s layout resource file ?</string>
-    <string name="question18_answer1">getView</string>
-    <string name="question18_answer2">getViewFromId</string>
-    <string name="question18_answer3">findViewById</string>
-
-    <string name="question19">Which Android Activity method is used to attach a user interface to an activity ?</string>
-    <string name="question19_answer1">setContent</string>
-    <string name="question19_answer2">setContentView</string>
-    <string name="question19_answer3">setViewContent</string>
-
-    <string name="question20">How can one reference an Android resource in Java  ?</string>
-    <string name="question20_answer1">R.resourceType.resourceName</string>
-    <string name="question20_answer2">\@resourceType/resourceName</string>
-    <string name="question20_answer3">\?resourceType/resourceName</string>
 
 </resources>

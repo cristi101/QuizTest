@@ -21,6 +21,9 @@
     <!--
         Source for how to design borders in Android
         https://stackoverflow.com/questions/3496269/how-do-i-put-a-border-around-an-android-textview
+
+        Source for how to make stateful backgrounds in Android
+        http://charlesharley.com/2012/programming/custom-drawable-states-in-android
     -->
 
     <!--

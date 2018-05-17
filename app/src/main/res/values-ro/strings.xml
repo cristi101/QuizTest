@@ -7,27 +7,6 @@
 
     <!-- Întrebările și răspunsurile  -->
 
-    <!-- Întrebări despre XML  -->
-    <string name="question1">XML este o abreviere pentru: </string>
-    <string name="question1_answer1">eXtraordinary Moon Landing</string>
-    <string name="question1_answer2">eXceptional Machine Language</string>
-    <string name="question1_answer3">eXtensible Markup Language</string>
-
-    <string name="question2">Ce este XML ?</string>
-    <string name="question2_answer1">Un limbaj folosit pentru descrierea resurselor aplicațiilor Android.</string>
-    <string name="question2_answer2">O notație pentru fragmente de informație numite elemente, structurate ca o ierarhie.</string>
-    <string name="question2_answer3">Un format simplu bazat pe text derivat din SGML.</string>
-
-    <string name="question3">Care din urmâtoarele sunt comentarii XML ?</string>
-    <string name="question3_answer1">// Acesta este un comentariu </string>
-    <string name="question3_answer2">/* Acesta este un comentariu */</string>
-    <string name="question3_answer3">&lt;!-- Acesta este un comentariu --&gt;</string>
-
-    <string name="question4">Care din următoarele sunt etichete XML ?</string>
-    <string name="question4_answer1">{etichetă} </string>
-    <string name="question4_answer2">&lt;etichetă/&gt;</string>
-    <string name="question4_answer3">[etichetă]</string>
-
     <!-- Întrebări despre Java -->
     <string name="question5">Ce este Java ?</string>
     <string name="question5_answer1">Cea mai populată insulă din lume.</string>
@@ -77,33 +56,5 @@
     <string name="question14_hint">Introduceți răspunsul aici</string>
     <string name="question14_answer">void</string>
 
-    <!-- Întrebări despre Android -->
-    <string name="question15">Ce este un "View" în Android ?</string>
-    <string name="question15_answer1">O zonă rectangulară a ecranului, desenată de un obiect Java.</string>
-    <string name="question15_answer2">Un element al interfeței cu utilizatorul.</string>
-    <string name="question15_answer3">O fotografie pe ecran.</string>
 
-    <string name="question16">Ce "View-uri" Android sunt folosite pentru introducerea de date ?</string>
-    <string name="question16_answer1">TextView</string>
-    <string name="question16_answer2">ImageView</string>
-    <string name="question16_answer3">EditText</string>
-
-    <string name="question17">Cum se numește procesul de creare a obiectelor Java din XML ?</string>
-    <string name="question17_hint">Introduceți răspunsul aici</string>
-    <string name="question17_answer">inflation</string>
-
-    <string name="question18">Ce metodă a unei activități Android este folosită pentru a obține o referință la un "View" definit în fișierul de resurse al activității ?</string>
-    <string name="question18_answer1">getView</string>
-    <string name="question18_answer2">getViewFromId</string>
-    <string name="question18_answer3">findViewById</string>
-
-    <string name="question19">Ce metodă a unei activități Android este folosită pentru a-i atașa o interfață cu utilizatorul ?</string>
-    <string name="question19_answer1">setContent</string>
-    <string name="question19_answer2">setContentView</string>
-    <string name="question19_answer3">setViewContent</string>
-
-    <string name="question20">Cum se poate menționa o resursă Android în Java  ?</string>
-    <string name="question20_answer1">R.tipResursă.numeResursă</string>
-    <string name="question20_answer2">\@tipResursă/numeResursă</string>
-    <string name="question20_answer3">\?tipResursă/numeResursă</string>
 </resources>
